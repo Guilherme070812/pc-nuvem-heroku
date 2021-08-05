@@ -13,8 +13,9 @@ app.get("/questions", (req, res) => {
 
 app.post("/questions", (req, res) => {
   const question = req.body;
-  questions.push(question);
-  return res.json({ ...question, id: uuid() });
+  const id = uuid();
+  questions.push({ ...question, id });
+  return res.json({ ...question, id });
 });
 
 app.listen(process.env.PORT || 3333);
